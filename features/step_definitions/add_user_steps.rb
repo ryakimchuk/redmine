@@ -1,20 +1,4 @@
-When(/^I click on username link$/) do
-  @driver.find_element(:id, 'loggedas').click
-end
-
-Then(/^I should see user information page$/) do
-  expect(@driver.find_element(:css, '#content>h2').displayed?).to be_truthy
-end
-
-When(/^I click on project name$/) do
-  @driver.find_element(:xpath, './/*[@id="content"]/div[2]/ul[2]/li[2]/a').click
-end
-
-And(/^I go to project Settings page$/) do
-  @driver.find_element(:css, '.settings').click
-end
-
-When(/^I click on Members tab$/) do
+Given(/^I click on Members tab$/) do
   @driver.find_element(:id, 'tab-members').click
 end
 
@@ -55,7 +39,7 @@ When(/^I change user role$/) do
 end
 
 And(/^click on Save button$/) do
-  @driver.find_element(:name, 'commit').click
+  @driver.find_element(:css, '.small[type="submit"]').click
 end
 
 Then(/^new role will be displayed$/) do

@@ -1,5 +1,8 @@
 Feature: Login to the system
 
+  Background: Registration
+    Given new user registered
+
   Scenario: Positive Login to the system
     Given I am on Home Page
     When I click Sign in button

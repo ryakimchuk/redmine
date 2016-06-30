@@ -1,12 +1,8 @@
 Feature: Logout from the system
 
-  Background: Login to the system
-    Given I am on Home Page
-    When I click Sign in button
-    Then I see login form
-    When I fill in login form
-    And I click Log in button
-    Then I should see greeting message
+  Background: Registration and Login to the system
+    Given new user registered
+    And new user logged in to the system
 
   Scenario: Logout from the system
     Given I am on Home Page

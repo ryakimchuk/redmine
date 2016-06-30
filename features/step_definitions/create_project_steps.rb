@@ -11,10 +11,11 @@ Then(/^I should see New project form$/) do
 end
 
 When(/^I fill in project form$/) do
-  page = Registration.new
-  @driver.find_element(:id, 'project_name').send_keys page.generate_project_name
+  @page.generate_project_name
+  @driver.find_element(:id, 'project_name').send_keys @page.project
   @driver.find_element(:id, 'project_description').send_keys 'My First Project description'
-  @driver.find_element(:id, 'project_identifier').send_keys page.generate_project_id
+  @page.generate_project_id
+  @driver.find_element(:id, 'project_identifier').send_keys @page.project_id
   @driver.find_element(:id, 'project_homepage').send_keys 'http://facebook.com'
   @driver.find_element(:id, 'project_enabled_module_names_boards').click
   @driver.find_element(:id, 'project_enabled_module_names_gantt').click
@@ -27,4 +28,19 @@ end
 
 Then(/^I should see Successful creation message$/) do
   expect(@driver.find_element(:id, 'flash_notice').displayed?).to be_truthy
+end
+
+When(/^user create new project$/) do
+  @driver.find_element(:class, 'projects').click
+  @driver.find_element(:link, 'New project').click
+  @page.generate_project_name
+  @driver.find_element(:id, 'project_name').send_keys @page.project
+  @driver.find_element(:id, 'project_description').send_keys 'My First Project description'
+  @page.generate_project_id
+  @driver.find_element(:id, 'project_identifier').send_keys @page.project_id
+  @driver.find_element(:id, 'project_homepage').send_keys 'http://facebook.com'
+  @driver.find_element(:id, 'project_enabled_module_names_boards').click
+  @driver.find_element(:id, 'project_enabled_module_names_gantt').click
+  @driver.find_element(:css, 'input[value="3"]').click
+  @driver.find_element(:name, 'commit').click
 end

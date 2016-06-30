@@ -27,14 +27,3 @@ end
 Given(/^I am on my Account page$/) do
   @driver.navigate.to('http://demo.redmine.org/my/account')
 end
-
-And(/^I fill in change password form with old password$/) do
-  @driver.find_element(:id, 'password').send_keys '12345'
-  @driver.find_element(:id, 'new_password').send_keys '1234'
-  @driver.find_element(:id, 'new_password_confirmation').send_keys '1234'
-end
-
-When(/^I fill in login form with new password$/) do
-  @driver.find_element(:id, 'username').send_keys 'testproverkin230'
-  @driver.find_element(:id, 'password').send_keys '12345'
-end
